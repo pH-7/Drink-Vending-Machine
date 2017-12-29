@@ -18,10 +18,10 @@ int main(void) {
     int status = 0; // False
     char q[4] = "quit";
     char* currency = "$";
-    char i;
-    int bill = 0, to_pay = 0, price = 0, rendering = 0; // Default Price
+    char i = NULL;
+    float bill = 0.0, to_pay = 0.0, price = 0.0, rendering = 0.0; // Default Price
 
-    do {
+    while (i != q) {
         printf("----- Vending Machine -----\n");
         printf("Choose and confirm, please...\n");
         printf(" - Coke (Cola) (Coca-Cola ®) -  <A>\n");
@@ -40,8 +40,8 @@ int main(void) {
 
         price = get_price(i);
 
-        printf("\nPlease pay: %s%i\n", currency, price);
-        scanf("%i", &bill);
+        printf("\nPlease pay: %s %f\n", currency, price);
+        scanf("%lf", &bill);
 
         if (bill == price) status = 1;
 
@@ -70,7 +70,7 @@ int main(void) {
 
 
         system("pause");
-    } while(i != q);
+    }
 
     printf("----- End of program -----\n");
 
@@ -79,54 +79,54 @@ int main(void) {
     return 0;
 }
 
-int get_price(char input) {
-    int amount;
+float get_price(char input) {
+	float price;
 
     switch (input) {
             // Price List
         case 'a':
-            amount = 1;
+            price = 1.4;
             break;
 
         case 'b':
-            amount = 2;
+            price = 1.4;
             break;
 
         case 'c':
-            amount = 2;
+            price = 1.2;
             break;
 
         case 'd':
-            amount = 2;
+            price = 1.2;
             break;
 
         case 'e':
-            amount = 1;
+            price = 1.5;
             break;
 
         case 'f':
-            amount = 1;
+            price = 1.6;
             break;
 
         case 'g':
-            amount = 2;
+            price = 1.4;
             break;
 
         case 'h':
-            amount = 2;
+            price = 2.0;
             break;
 
         case 'i':
-            amount = 1;
+            price = 1.2;
             break;
 
         case 'j':
-            amount = 1;
+            price = 1.0;
             break;
 
         default:
-            amount = 0;
+            price = 0.0;
     }
 
-    return amount;
+    return price;
 }
